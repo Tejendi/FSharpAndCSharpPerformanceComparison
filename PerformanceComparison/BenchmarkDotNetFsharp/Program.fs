@@ -121,7 +121,7 @@ let main argv =
     printfn "end %A" DateTime.Now
     *)
 
-    //BenchmarkRunner.Run<PerformanceTests_ImmutableList>() |> printfn "%A"
+    BenchmarkRunner.Run<PerformanceTests_ImmutableList>() |> printfn "%A"
     BenchmarkRunner.Run<PerformanceTests_MutableList>() |> printfn "%A"
     Console.ReadKey() |> ignore
     0
