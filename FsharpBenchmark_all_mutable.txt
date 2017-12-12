@@ -1,0 +1,50 @@
+// * Detailed results *
+PerformanceTests_MutableList.FSharp_GenerateCustomers_Mutable: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 145.2171 ms, StdErr = 0.5532 ms (0.38%); N = 15, StdDev = 2.1425 ms
+Min = 142.5312 ms, Q1 = 143.5367 ms, Median = 144.6342 ms, Q3 = 147.1346 ms, Max = 148.5572 ms
+IQR = 3.5979 ms, LowerFence = 138.1398 ms, UpperFence = 152.5315 ms
+ConfidenceInterval = [142.9266 ms; 147.5076 ms] (CI 99.9%), Margin = 2.2905 ms (1.58% of Mean)
+Skewness = 0.27, Kurtosis = 1.41
+
+
+PerformanceTests_MutableList.FSharp_ModifyCustomers_Mutable: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 4.9758 ms, StdErr = 0.0125 ms (0.25%); N = 15, StdDev = 0.0484 ms
+Min = 4.9111 ms, Q1 = 4.9266 ms, Median = 4.9828 ms, Q3 = 5.0216 ms, Max = 5.0548 ms
+IQR = 0.0950 ms, LowerFence = 4.7841 ms, UpperFence = 5.1641 ms
+ConfidenceInterval = [4.9240 ms; 5.0275 ms] (CI 99.9%), Margin = 0.0517 ms (1.04% of Mean)
+Skewness = -0.01, Kurtosis = 1.38
+
+
+Total time: 00:02:27 (147.07 sec)
+
+// * Summary *
+
+BenchmarkDotNet=v0.10.11, OS=Windows 10 Redstone 3 [1709, Fall Creators Update] (10.0.16299.64)
+Processor=Intel Core i5-4210M CPU 2.60GHz (Haswell), ProcessorCount=4
+Frequency=2533210 Hz, Resolution=394.7561 ns, Timer=TSC
+  [Host]     : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+  DefaultJob : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+
+
+                           Method |       Mean |     Error |    StdDev |     Gen 0 |    Gen 1 |    Gen 2 | Allocated |
+--------------------------------- |-----------:|----------:|----------:|----------:|---------:|---------:|----------:|
+ FSharp_GenerateCustomers_Mutable | 145.217 ms | 2.2905 ms | 2.1425 ms | 1358.3333 | 675.0000 | 291.6667 |   7.11 MB |
+   FSharp_ModifyCustomers_Mutable |   4.976 ms | 0.0517 ms | 0.0484 ms |  406.2500 | 203.1250 |        - |   2.45 MB |
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen 0     : GC Generation 0 collects per 1k Operations
+  Gen 1     : GC Generation 1 collects per 1k Operations
+  Gen 2     : GC Generation 2 collects per 1k Operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+// * Artifacts cleanup *

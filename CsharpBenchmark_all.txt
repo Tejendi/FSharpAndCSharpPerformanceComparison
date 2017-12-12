@@ -1,0 +1,54 @@
+// * Detailed results *
+PerformanceTests.CSharp_GenerateCustomers: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 1.4336 s, StdErr = 0.0065 s (0.46%); N = 15, StdDev = 0.0253 s
+Min = 1.4122 s, Q1 = 1.4137 s, Median = 1.4266 s, Q3 = 1.4539 s, Max = 1.5050 s
+IQR = 0.0402 s, LowerFence = 1.3534 s, UpperFence = 1.5142 s
+ConfidenceInterval = [1.4065 s; 1.4607 s] (CI 99.9%), Margin = 0.0271 s (1.89% of Mean)
+Skewness = 1.46, Kurtosis = 4.47
+
+
+PerformanceTests.CSharp_ModifyCustomers: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 19.7415 ms, StdErr = 0.0094 ms (0.05%); N = 12, StdDev = 0.0327 ms
+Min = 19.6582 ms, Q1 = 19.7395 ms, Median = 19.7463 ms, Q3 = 19.7612 ms, Max = 19.7764 ms
+IQR = 0.0217 ms, LowerFence = 19.7070 ms, UpperFence = 19.7937 ms
+ConfidenceInterval = [19.6997 ms; 19.7834 ms] (CI 99.9%), Margin = 0.0418 ms (0.21% of Mean)
+Skewness = -1.31, Kurtosis = 3.92
+
+
+Total time: 00:20:13 (1213.74 sec)
+
+// * Summary *
+
+BenchmarkDotNet=v0.10.11, OS=Windows 10 Redstone 3 [1709, Fall Creators Update] (10.0.16299.64)
+Processor=Intel Core i5-4210M CPU 2.60GHz (Haswell), ProcessorCount=4
+Frequency=2533210 Hz, Resolution=394.7561 ns, Timer=TSC
+  [Host]     : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+  DefaultJob : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+
+
+                   Method |        Mean |      Error |     StdDev |      Gen 0 |     Gen 1 |     Gen 2 |  Allocated |
+------------------------- |------------:|-----------:|-----------:|-----------:|----------:|----------:|-----------:|
+ CSharp_GenerateCustomers | 1,433.64 ms | 27.0972 ms | 25.3468 ms | 12012.5000 | 7745.8333 | 1162.5000 | 72392082 B |
+   CSharp_ModifyCustomers |    19.74 ms |  0.0418 ms |  0.0327 ms |          - |         - |         - |      256 B |
+
+// * Hints *
+Outliers
+  PerformanceTests.CSharp_ModifyCustomers: Default -> 3 outliers were removed
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen 0     : GC Generation 0 collects per 1k Operations
+  Gen 1     : GC Generation 1 collects per 1k Operations
+  Gen 2     : GC Generation 2 collects per 1k Operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+// * Artifacts cleanup *

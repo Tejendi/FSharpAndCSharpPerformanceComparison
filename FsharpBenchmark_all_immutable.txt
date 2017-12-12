@@ -1,0 +1,54 @@
+// * Detailed results *
+PerformanceTests_ImmutableList.FSharp_GenerateCustomers_Immutable: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 1.6107 s, StdErr = 0.0019 s (0.12%); N = 15, StdDev = 0.0075 s
+Min = 1.6015 s, Q1 = 1.6031 s, Median = 1.6107 s, Q3 = 1.6184 s, Max = 1.6223 s
+IQR = 0.0153 s, LowerFence = 1.5802 s, UpperFence = 1.6414 s
+ConfidenceInterval = [1.6027 s; 1.6187 s] (CI 99.9%), Margin = 0.0080 s (0.49% of Mean)
+Skewness = 0.13, Kurtosis = 1.26
+
+
+PerformanceTests_ImmutableList.FSharp_ModifyCustomers_Immutable: DefaultJob
+Runtime = .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0; GC = Concurrent Workstation
+Mean = 292.4060 ms, StdErr = 0.6254 ms (0.21%); N = 12, StdDev = 2.1664 ms
+Min = 288.0403 ms, Q1 = 291.6850 ms, Median = 293.1120 ms, Q3 = 294.0341 ms, Max = 294.4857 ms
+IQR = 2.3491 ms, LowerFence = 288.1614 ms, UpperFence = 297.5577 ms
+ConfidenceInterval = [289.6312 ms; 295.1808 ms] (CI 99.9%), Margin = 2.7748 ms (0.95% of Mean)
+Skewness = -1.02, Kurtosis = 2.57
+
+
+Total time: 00:26:09 (1569.77 sec)
+
+// * Summary *
+
+BenchmarkDotNet=v0.10.11, OS=Windows 10 Redstone 3 [1709, Fall Creators Update] (10.0.16299.64)
+Processor=Intel Core i5-4210M CPU 2.60GHz (Haswell), ProcessorCount=4
+Frequency=2533210 Hz, Resolution=394.7561 ns, Timer=TSC
+  [Host]     : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+  DefaultJob : .NET Framework 4.6.1 (CLR 4.0.30319.42000), 32bit LegacyJIT-v4.7.2600.0
+
+
+                             Method |       Mean |    Error |   StdDev |      Gen 0 |      Gen 1 |    Gen 2 | Allocated |
+----------------------------------- |-----------:|---------:|---------:|-----------:|-----------:|---------:|----------:|
+ FSharp_GenerateCustomers_Immutable | 1,610.7 ms | 7.972 ms | 7.457 ms | 15183.3333 | 10220.8333 | 941.6667 |   76.3 MB |
+   FSharp_ModifyCustomers_Immutable |   292.4 ms | 2.775 ms | 2.166 ms |  7687.5000 |  4966.6667 | 312.5000 |  39.71 MB |
+
+// * Hints *
+Outliers
+  PerformanceTests_ImmutableList.FSharp_ModifyCustomers_Immutable: Default -> 3 outliers were removed
+
+// * Legends *
+  Mean      : Arithmetic mean of all measurements
+  Error     : Half of 99.9% confidence interval
+  StdDev    : Standard deviation of all measurements
+  Gen 0     : GC Generation 0 collects per 1k Operations
+  Gen 1     : GC Generation 1 collects per 1k Operations
+  Gen 2     : GC Generation 2 collects per 1k Operations
+  Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms      : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+// * Artifacts cleanup *
