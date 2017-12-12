@@ -30,6 +30,7 @@ namespace BenchmarkDotNetCsharp
         private List<Customer> _customers;
 
         [Setup]
+        [Benchmark]
         public void CSharp_GenerateCustomers()
         {
             var numberToGenerate = 1000000;
@@ -52,13 +53,6 @@ namespace BenchmarkDotNetCsharp
 
             _customers = customers;
 
-            // Check the number of VIP customers:
-            // CSharp_GenerateCustomers VIP customers count: 80 251 / 100 000
-            // CSharp_GenerateCustomers VIP customers count: 801 227 / 1 000 000
-            
-//            var today = DateTime.Today;
-//            var vipCustomersCount = _customers.Count(c => (today - c.CustomerSince).TotalDays > 365 * 2);
-//            Console.WriteLine($"CSharp_GenerateCustomers VIP customers count: {vipCustomersCount}");
         }
 
         [Benchmark]

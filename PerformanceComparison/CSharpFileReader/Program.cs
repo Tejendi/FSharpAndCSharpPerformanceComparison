@@ -13,7 +13,8 @@ namespace CSharpFileReader
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Histogram>();
+            var summary = BenchmarkRunner.Run<Histogram>();
+            Console.WriteLine(summary);
         }
     }
 

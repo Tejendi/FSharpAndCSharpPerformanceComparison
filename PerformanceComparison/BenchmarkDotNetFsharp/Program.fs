@@ -36,6 +36,7 @@ type PerformanceTests_ImmutableList() =
     member this.GetCustomers() = _customers
    
     [<Setup>]
+    [<Benchmark>]
     member this.FSharp_GenerateCustomers_Immutable() =
         let numberToGenerate = 1000000
         let random = Random(10)
@@ -74,6 +75,7 @@ type PerformanceTests_MutableList() =
     member this.GetCustomers() = _customers
 
     [<Setup>]
+    [<Benchmark>]
     member this.FSharp_GenerateCustomers_Mutable() =
         let numberToGenerate = 100000
         let random = Random(10)
@@ -121,7 +123,7 @@ let main argv =
     printfn "end %A" DateTime.Now
     *)
 
-    BenchmarkRunner.Run<PerformanceTests_ImmutableList>() |> printfn "%A"
+    //BenchmarkRunner.Run<PerformanceTests_ImmutableList>() |> printfn "%A"
     BenchmarkRunner.Run<PerformanceTests_MutableList>() |> printfn "%A"
     Console.ReadKey() |> ignore
     0
